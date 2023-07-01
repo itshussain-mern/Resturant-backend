@@ -41,6 +41,29 @@ async function validateAddUser(input){
     return error
 
 }
+async function validateLoginUser(input){
+    let error = {
+        status: false,
+        error: ""
+    }
+    if(!input.email){
+        error.status = true;
+        error.error = ErrorConstant.EMAIL_REQUIRED;
+        return error;
+    }
+    if(!input.password){
+        error.status = true;
+        error.error = ErrorConstant.PASSWORD_REQUIRED;
+        return error;
+    } 
+    if (!validateEmail(input.email)) {
+        error.status = true;
+        error.error = ErrorConstant.INVALID_EMAIL;
+        return error;
+    }
+    return error
+}
 module.exports = {
-    validateAddUser
+    validateAddUser,
+    validateLoginUser
 }

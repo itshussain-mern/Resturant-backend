@@ -6,6 +6,7 @@ class ErrorConstant {
     static ADDRESS_REQUIRED = "Address is required";
     static INVALID_EMAIL = "Your provided email is invalid";
     static USER_WITH_EMAIL_ALREADY_EXISTS = 'User with this Email already exist';
+    static INVALID_CREDENTIAL = "Your provided credentials are invalid";
 
 }
 module.exports = ErrorConstant
