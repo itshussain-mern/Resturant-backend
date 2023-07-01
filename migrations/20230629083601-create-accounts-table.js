@@ -16,6 +16,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      password: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       phone: {
         type: Sequelize.BIGINT(10),
         allowNull: false,
@@ -25,8 +29,16 @@ module.exports = {
         allowNull: false,
       },
       permissions: {
-        type: Sequelize.STRING,
-        allowNull: false,
+        type: Sequelize.TEXT, // Store permissions as a string
+        allowNull: true, // Allow null if needed
+        get() {
+          const rawValue = this.getDataValue('permissions');
+          return rawValue ? JSON.parse(rawValue) : [];
+        },
+        set(value) {
+          const serializedValue = value ? JSON.stringify(value) : null;
+          this.setDataValue('permissions', serializedValue);
+        },
       },
       deleted_at: {
         type: Sequelize.DATE
