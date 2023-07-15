@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const sequelize = require('./models/database');
 const accountsRoute = require('./routes/accounts.route')
+const restaurantRoute = require('./routes/restaurant.route')
 
 const app = express();
 dotenv.config();
@@ -15,7 +16,13 @@ app.use(cors());
 
 app.use(express.json());
 
+
 app.use('/', accountsRoute);
+
+app.use('/restaurant', restaurantRoute);
+
+app.use('/Images', express.static('./Images'));
+
 
 const port = process.env.PORT || 3000;
 
