@@ -12,6 +12,19 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      category_image: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      description: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      approved: {
+        type: Sequelize.TINYINT,
+        allowNull: false,
+        defaultValue: 0,
+      },
       restaurant_id: {
         type: Sequelize.INTEGER,
         references: {
@@ -19,19 +32,20 @@ module.exports = {
           key: 'id',
         },
       },
-      deleted_at: {
+      deletedAt: {
         type: Sequelize.DATE
       },
-      created_at: {
+      createdAt: {
         type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
-      updated_at: {
+      updatedAt: {
         type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-      }
+      },
+      
     });
   },
   async down(queryInterface, Sequelize) {

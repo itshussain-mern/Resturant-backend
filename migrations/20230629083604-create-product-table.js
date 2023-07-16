@@ -20,17 +20,14 @@ module.exports = {
                 type: Sequelize.DECIMAL(10, 2),
                 allowNull: false,
             },
-            isAvailable: {
+            product_image: {
+                type: Sequelize.STRING,
+                allowNull: false,
+              },
+            is_available: {
                 type: Sequelize.BOOLEAN,
                 allowNull: false,
                 defaultValue: true,
-            },
-            restaurant_id: {
-                type: Sequelize.INTEGER,
-                references: {
-                    model: 'restaurant',
-                    key: 'id',
-                },
             },
             category_id: {
                 type: Sequelize.INTEGER,
@@ -39,15 +36,15 @@ module.exports = {
                     key: 'id',
                 },
             },
-            deleted_at: {
+            deletedAt: {
                 type: Sequelize.DATE
             },
-            created_at: {
+            createdAt: {
                 type: Sequelize.DATE,
                 allowNull: false,
                 defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
             },
-            updated_at: {
+            updatedAt: {
                 type: Sequelize.DATE,
                 allowNull: false,
                 defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),

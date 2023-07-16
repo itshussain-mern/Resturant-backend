@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('./database');
 
-const Restaurant = sequelize.define("restaurant", {
+const Product = sequelize.define("product", {
     id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -12,53 +12,33 @@ const Restaurant = sequelize.define("restaurant", {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    slogan: {
+    description: {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    location: {
+    price: {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    phone: {
-        type: Sequelize.BIGINT(10),
-        allowNull: false,
-    },
-    email: {
+    product_image: {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    address: {
-        type: Sequelize.STRING,
-        allowNull: false,
-    },
-    cnic_number: {
-        type: Sequelize.BIGINT(13),
-        allowNull: false,
-    },
-    cnic_front_image: {
-        type: Sequelize.STRING,
-        allowNull: false,
-    },
-    cnic_back_image: {
-        type: Sequelize.STRING,
-        allowNull: false,
-    },
-    approved: {
+    is_available: {
         type: Sequelize.TINYINT,
         allowNull: false,
         defaultValue: 0,
-      },
-    account_id: {
+    },
+    category_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'accounts',
-          key: 'id',
+            model: 'category',
+            key: 'id',
         },
     }
-    
+
 }, {
     paranoid: true,
     freezeTableName: true,
 });
-module.exports = Restaurant;
+module.exports = Product;

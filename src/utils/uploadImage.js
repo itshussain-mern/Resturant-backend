@@ -4,11 +4,23 @@ const path = require('path')
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         if (file.fieldname === 'cnic_front_pic' || file.fieldname === 'cnic_back_pic') {
-            cb(null, './src/Images');
+            cb(null, './src/Images/cnic');
+        }
+        else if (file.fieldname === 'category_image') {
+            cb(null, './src/Images/category');
+        }
+        else if (file.fieldname === 'product_image') {
+            cb(null, './src/Images/product');
         }
     },
     filename: (req, file, cb) => {
         if (file.fieldname === 'cnic_front_pic' || file.fieldname === 'cnic_back_pic') {
+            cb(null, Date.now() + path.extname(file.originalname));
+        }
+        else if (file.fieldname === 'category_image') {
+            cb(null, Date.now() + path.extname(file.originalname));
+        }
+        else if (file.fieldname === 'product_image') {
             cb(null, Date.now() + path.extname(file.originalname));
         }
     }

@@ -28,6 +28,23 @@ module.exports = {
                 type: Sequelize.STRING,
                 allowNull: false,
             },
+            cnic_number: {
+                type: Sequelize.BIGINT(13),
+                allowNull: false,
+            },
+            cnic_front_image: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
+            cnic_back_image: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
+            approved: {
+                type: Sequelize.TINYINT,
+                allowNull: false,
+                defaultValue: 0,
+            },
             deleted_at: {
                 type: Sequelize.DATE
             },

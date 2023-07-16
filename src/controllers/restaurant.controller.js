@@ -20,7 +20,43 @@ async function addRestaurant(req, res) {
         }
     }
 }
+async function getRestaurants(req, res) {
+    const restaurantList = await Restaurant.findAll({
+        where: {
+            approved: 1,
+            deletedAt: null
+        }
+    })
+    if (restaurantList.length) {
+        return res.send(resSuccess(SuccessConstant.RESTAURANTS_GET, 200, restaurantList));
+    }
+    else {
+        return res.send(resSuccess(SuccessConstant.RESTAURANTS_NOTFOUND, 200, {}));
+    }
+}
+async function getRestaurantById(req, res) {
+    const { id } = req.params;
+    const dataValues = await Restaurant.findOne({
+        where: {
+            approved: 1,
+            deletedAt: null,
+            id
+        }
+    })
+    if (dataValues) {
+        return res.send(resSuccess(SuccessConstant.RESTAURANTS_GET, 200, dataValues));
+    }
+    else {
+        return res.send(resSuccess(SuccessConstant.RESTAURANTS_NOTFOUND, 200, {}));
+    }
+}
+async function updateRestaurant(req, res) {
+    console.log("updateRestaurant")
+}
 
 module.exports = {
-    addRestaurant
+    addRestaurant,
+    getRestaurants,
+    getRestaurantById,
+    updateRestaurant
 }

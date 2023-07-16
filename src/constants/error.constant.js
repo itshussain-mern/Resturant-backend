@@ -16,5 +16,13 @@ class ErrorConstant {
     static CNIC_FRONTIMAGE_REQUIRED = "Cnic front-side image is required";
     static CNIC_BACKIMAGE_REQUIRED = "Cnic back-side image is required";
 
+    static CATEGORY_NAME_REQUIRED = "Category name is required";
+    static CATEGORY_IMAGE_REQUIRED = "Category image is required";
+    static CATEGORY_DESCRIPTION_REQUIRED = "Category description is required";
+
+    static PRODUCT_NAME_REQUIRED = "Product name is required";
+    static PRODUCT_IMAGE_REQUIRED = "Product image is required";
+    static PRODUCT_PRICE_REQUIRED = "Product price is required";
+
 }
 module.exports = ErrorConstant
